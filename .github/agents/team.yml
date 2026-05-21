@@ -1,0 +1,78 @@
+# Suggested custom agent team for Mona's Project Pulse dashboard
+# Each agent entry includes role, responsibilities, triggers, and example prompt.
+agents:
+  - id: project-manager
+    display_name: "Project Manager Agent"
+    role: "Coordinates the dashboard effort, defines milestones and acceptance criteria"
+    responsibilities:
+      - "Prioritize features and break work into tickets"
+      - "Write short specs and acceptance criteria for each dashboard component"
+      - "Assign tasks to specialist agents and review outputs"
+    triggers: ["manual", "on-demand"]
+    example_prompt: "Create a 2-week roadmap and list tasks to deliver the MVP of Project Pulse focusing on active projects and health metrics."
+
+  - id: frontend
+    display_name: "Frontend Agent"
+    role: "Builds UI components, storybook entries, and frontend integration"
+    responsibilities:
+      - "Implement React/Vue components for charts, filters, and cards"
+      - "Provide example mock data and component tests"
+      - "Deliver static assets and usage instructions"
+    triggers: ["task-assigned", "pull-request-ready"]
+    example_prompt: "Create a responsive React component for a Project Health card showing status, progress, and last-updated timestamp. Include props and an example usage."
+
+  - id: backend
+    display_name: "Backend Agent"
+    role: "Implements APIs, data models, and server-side business logic"
+    responsibilities:
+      - "Design API endpoints and database schemas for metrics"
+      - "Provide example SQL queries or aggregation pipelines"
+      - "Write integration tests and API contracts (OpenAPI)"
+    triggers: ["task-assigned", "integration-test"]
+    example_prompt: "Design REST endpoints to fetch project metrics (status, %complete, last activity) and include OpenAPI spec snippets."
+
+  - id: data-engineer
+    display_name: "Data/Analytics Agent"
+    role: "Transforms raw event/task data into dashboard-ready metrics"
+    responsibilities:
+      - "Define ETL steps, aggregation logic, and schema mappings"
+      - "Provide SQL/BigQuery/DB queries and synthetic sample datasets"
+      - "Document assumptions and data freshness expectations"
+    triggers: ["task-assigned", "data-ready"]
+    example_prompt: "Given tasks and events tables, produce SQL that computes per-project health metrics and a sample 7-day time series."
+
+  - id: designer
+    display_name: "Design/UX Agent"
+    role: "Creates visual designs, accessibility guidance, and component specs"
+    responsibilities:
+      - "Produce wireframes, color tokens, and accessibility contrast checks"
+      - "Outline responsive behavior and micro-interactions"
+    triggers: ["design-request"]
+    example_prompt: "Provide a low-fidelity wireframe and color palette for a Project Pulse dashboard, focused on clarity for PMs."
+
+  - id: qa
+    display_name: "QA/Testing Agent"
+    role: "Writes test plans, test cases, and verifies outputs"
+    responsibilities:
+      - "Create unit, integration, and e2e test ideas"
+      - "Validate sample outputs against acceptance criteria"
+    triggers: ["pull-request", "pre-release"]
+    example_prompt: "Generate test cases for the Project Health API and outline e2e scenarios that verify data correctness and UI rendering."
+
+  - id: devops
+    display_name: "DevOps/Deployment Agent"
+    role: "Handles deployment, observability, and infra-as-code guidance"
+    responsibilities:
+      - "Provide CI/CD workflows, deployment steps, and monitoring suggestions"
+      - "Create runbooks for data freshness and failure modes"
+    triggers: ["release", "integration"]
+    example_prompt: "Draft a GitHub Actions workflow to build, test, and deploy the Project Pulse dashboard to staging."
+
+  - id: docs
+    display_name: "Docs/Onboarding Agent"
+    role: "Produces user documentation, API docs, and onboarding guides"
+    responsibilities:
+      - "Write README sections, usage examples, and sample queries"
+      - "Create a short "Getting Started" checklist for new contributors"
+    triggers: ["release", "docs-request"]
+    example_prompt: "Create a one-page onboarding guide describing how to run the Project Pulse dashboard locally with mock data."
